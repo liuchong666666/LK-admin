@@ -30,7 +30,9 @@ class LKAside extends React.Component {
                 </a>
               </li>
               <li>
-                <a onClick={e => e.preventDefault()} href="/user_list.html">
+                {/* 这样来解决 javascript:void(0)  */}
+                {/* 工作的时候出现ie对一些方法(isArray)不兼容 用 core.js */}
+                <a onClick={e => e.preventDefault()} href="#">
                   <i className="fa fa-object-group"></i>
                   课程管理
                   <i className="arrow fa fa-angle-right"></i>
@@ -62,33 +64,45 @@ class LKAside extends React.Component {
                   LK建模中心
                 </a>
               </li>
-              {/* <li>
-                <a href="javascript:;">
+              <li>
+                <a onClick={e => e.preventDefault()} href="#">
                   <i className="fa fa-cog"></i>
                   设置中心
                   <i className="arrow fa fa-angle-right"></i>
                 </a>
                 <ul className="list-unstyled">
                   <li>
-                    <a href="javascript:;">站点设置</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      站点设置
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:;">用户设置</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      用户设置
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:;">角色管理</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      角色管理
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:;">课程设置</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      课程设置
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:;">运营设置</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      运营设置
+                    </a>
                   </li>
                   <li>
-                    <a href="javascript:;">财务设置</a>
+                    <a onClick={e => e.preventDefault()} href="#">
+                      财务设置
+                    </a>
                   </li>
                 </ul>
-              </li> */}
+              </li>
             </ul>
           </div>
         </div>
