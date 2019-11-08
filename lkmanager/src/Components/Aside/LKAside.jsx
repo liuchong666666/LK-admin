@@ -30,7 +30,7 @@ class LKAside extends React.Component {
                 </a>
               </li>
               <li>
-                <a href="javascript:void(0);">
+                <a onClick={e => e.preventDefault()} href="/user_list.html">
                   <i className="fa fa-object-group"></i>
                   课程管理
                   <i className="arrow fa fa-angle-right"></i>
@@ -62,7 +62,7 @@ class LKAside extends React.Component {
                   LK建模中心
                 </a>
               </li>
-              <li>
+              {/* <li>
                 <a href="javascript:;">
                   <i className="fa fa-cog"></i>
                   设置中心
@@ -88,7 +88,7 @@ class LKAside extends React.Component {
                     <a href="javascript:;">财务设置</a>
                   </li>
                 </ul>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

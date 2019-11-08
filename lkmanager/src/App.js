@@ -11,7 +11,8 @@ class App extends React.Component {
       <Provider store={store}>
         <Router>
           <div>
-            <LKHeader />
+            {/* <LKHeader /> */}
+
             <LKAside />
           </div>
         </Router>
