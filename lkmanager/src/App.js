@@ -1,18 +1,16 @@
-import React from "react";
-import { Provider } from "react-redux";
-import store from "./Store/index";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import LayOut from "./Components/LayOut";
-import Home from "./Pages/Home/Home";
-import Login from "./Pages/User/Login";
-import User from "./Pages/User/User";
-import Mine from "./Pages/Mine/Mine";
+import LayOut from './Components/LayOut';
+import Home from './Pages/Home/Home';
+import Login from './Pages/User/Login';
+import User from './Pages/User/User';
+import Mine from './Pages/Mine/Mine';
 
-import ErrorPage from "./Pages/ErrorPage/index";
+import ErrorPage from './Pages/ErrorPage/index';
 
-import SowingRouter from "./Pages/Sowing/router";
-import CourseRouter from "./Pages/Course/router";
+import SowingRouter from './Pages/Sowing/router';
+import CourseRouter from './Pages/Course/router';
 
 class App extends React.Component {
   render() {
@@ -30,10 +28,11 @@ class App extends React.Component {
       </LayOut>
     );
     return (
-      <Provider store={store}>
-        <Router>
+      <>
+        <>
+          {/* <Provider store={store}>
           <div>
-            {/* <LKHeader />
+            <LKHeader />
             <div className="main">
               <LKAside />
               //  <Route path={} component={}/>
@@ -57,14 +56,17 @@ class App extends React.Component {
                   );
                 }
               })}
-            </div> */}
+            </div>
           </div>
+        </Provider> */}
+        </>
+        <Router>
           <Switch>
             <Route path="/login" component={Login} />
             <Route path="/" render={props => LayOutRouter} />
           </Switch>
         </Router>
-      </Provider>
+      </>
     );
   }
 }

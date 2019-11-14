@@ -1,15 +1,15 @@
-import express from "express";
-import Sowing from "./../models/Sowing";
-import formidable from "formidable";
-import config from "./../src/config";
-import { basename } from "path";
+import express from 'express';
+import Sowing from './../models/Sowing';
+import formidable from 'formidable';
+import config from './../src/config';
+import { basename } from 'path';
 
 const router = express.Router({});
 
 /**
  * 往数据库中插入一条新纪录
  */
-router.post("/sowing/api/add", (req, res, next) => {
+router.post('/sowing/api/add', (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.uploadDir = config.upload_path;
   form.keepExtensions = true;
@@ -36,7 +36,7 @@ router.post("/sowing/api/add", (req, res, next) => {
       // 上架时间
       s_time: body.s_time,
       // 下架时间
-      e_time: body.e_time
+      e_time: body.e_time,
     });
     sowing.save((err, result) => {
       if (err) {
@@ -44,7 +44,7 @@ router.post("/sowing/api/add", (req, res, next) => {
       }
       res.json({
         status_code: 200,
-        result: "添加数据成功"
+        result: '添加数据成功',
       });
     });
   });
@@ -52,7 +52,7 @@ router.post("/sowing/api/add", (req, res, next) => {
 /**
  * 获取轮播图数据(所有)
  */
-router.get("/sowing/api/list", (req, res, next) => {
+router.get('/sowing/api/list', (req, res, next) => {
   // 1. 接收传递的参数
   let { page, pageSize } = req.query;
   page = Number.parseInt(page);
@@ -67,7 +67,7 @@ router.get("/sowing/api/list", (req, res, next) => {
       }
       res.json({
         status_code: 200,
-        result: sowings
+        result: sowings,
       });
     });
 });
@@ -79,21 +79,21 @@ router.get("/sowing/api/list", (req, res, next) => {
   /sowing/api/single
   /sowing/api/single/a/b
  */
-router.get("/sowing/api/single/:sowingId", (req, res, next) => {
+router.get('/sowing/api/single/:sowingId', (req, res, next) => {
   Sowing.findById(req.params.sowingId, (err, docs) => {
     if (err) {
       return next(err);
     }
     res.json({
       status_code: 200,
-      result: docs
+      result: docs,
     });
   });
 });
 /**
  * 根据id修改一条数据
  */
-router.post("/sowing/api/edit", (req, res, next) => {
+router.post('/sowing/api/edit', (req, res, next) => {
   const form = new formidable.IncomingForm();
   form.uploadDir = config.upload_path;
   form.keepExtensions = true;
@@ -137,7 +137,7 @@ router.post("/sowing/api/edit", (req, res, next) => {
         }
         res.json({
           status_code: 200,
-          result: "修改数据成功"
+          result: '修改数据成功',
         });
       });
     });
@@ -146,7 +146,7 @@ router.post("/sowing/api/edit", (req, res, next) => {
 /**
  * 根据id删除一条记录
  */
-router.get("/sowing/api/remove/:sowingId", (req, res, next) => {
+router.get('/sowing/api/remove/:sowingId', (req, res, next) => {
   Sowing.remove({ _id: req.params.sowingId }, (err, result) => {
     if (err) {
       return next(err);
@@ -154,21 +154,21 @@ router.get("/sowing/api/remove/:sowingId", (req, res, next) => {
     console.log(result);
     res.json({
       status_code: 200,
-      result: "删除数据成功！"
+      result: '删除数据成功！',
     });
   });
 });
 /*
   获取记录的总数
 */
-router.get("/sowing/api/count", (req, res, next) => {
+router.get('/sowing/api/count', (req, res, next) => {
   Sowing.count((err, count) => {
     if (err) {
       return next(err);
     }
     res.json({
       status_code: 200,
-      result: count
+      result: count,
     });
   });
 });
@@ -176,7 +176,7 @@ router.get("/sowing/api/count", (req, res, next) => {
 /*
   加载轮播图的列表页面
 */
-router.get("/sowing_list", (req, res, next) => {
+router.get('/sowing_list', (req, res, next) => {
   const page = Number.parseInt(req.query.page, 10) || 1;
   const pageSize = 3;
   // 查询数据库中所有的数据
@@ -195,15 +195,15 @@ router.get("/sowing_list", (req, res, next) => {
         //  总页码 = 总记录数 / 每页显示的页数
         const totalPage = Math.ceil(count / pageSize);
         // console.log(totalPage);
-        res.render("sowing_list.html", { swoings, totalPage, page });
+        res.render('sowing_list.html', { swoings, totalPage, page });
       });
     });
 });
 /*
   加载 添加轮播图的页面
 */
-router.get("/sowing_add", (req, res, next) => {
-  res.render("sowing_add.html");
+router.get('/sowing_add', (req, res, next) => {
+  res.render('sowing_add.html');
 });
 
 module.exports = router;

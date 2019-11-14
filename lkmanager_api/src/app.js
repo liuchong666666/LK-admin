@@ -1,16 +1,16 @@
-import express from "express";
-import config from "./config";
+import express from 'express';
+import config from './config';
 // 1.引入路由的文件
-import indexRouter from "./../routes/index";
-import sowingRouter from "./../routes/sowing";
-import homeRouter from "./../routes/home";
-
+import indexRouter from './../routes/index';
+import sowingRouter from './../routes/sowing';
+import homeRouter from './../routes/home';
+import userRouter from './../routes/user';
 // 引入中间件
-import bodyParser from "./../middle_wares/body_parser";
-import errorLog from "./../middle_wares/error_log";
+import bodyParser from './../middle_wares/body_parser';
+import errorLog from './../middle_wares/error_log';
 
 // 2. 引入模板引擎
-import nunjucks from "nunjucks";
+import nunjucks from 'nunjucks';
 
 const app = express();
 
@@ -18,12 +18,18 @@ const app = express();
 nunjucks.configure(config.viewPath, {
   autoescape: true,
   express: app,
-  noCache: true
+  noCache: true,
 });
 
 // 4. 配置静态的资源
 app.use(express.static(config.publicPath));
-app.use("/node_modules", express.static(config.node_modules));
+app.use('/node_modules', express.static(config.node_modules));
+
+//配置body-parser表单POST请求体插件(一定要在挂载前)
+// parse application/x-www-form-urlencoded
+// app.use(bodyParser.urlencoded({ extended: false }));
+// // parse application/json
+// app.use(bodyParser.json());
 
 // 注意: 一定要走在所有的路由之前
 app.use(bodyParser);
@@ -32,10 +38,10 @@ app.use(bodyParser);
 app.use(indexRouter);
 app.use(sowingRouter);
 app.use(homeRouter);
-
+app.use(userRouter);
 // 6. 挂载错误中间件
 app.use(errorLog);
 
 app.listen(1688, () => {
-  console.log("1688server is running");
+  console.log('1688server is running');
 });

@@ -1,14 +1,14 @@
-import * as constants from "./actionTypes";
+import * as constants from './actionTypes';
 
 //默认的数据
 const defaultState = {
   homeData: {},
-  sowingData: []
+  sowingData: [],
 };
 
 export default (state = defaultState, action) => {
   if (action.type === constants.INIT_HOME_DATA) {
-    const newState = JSON.parse(JSON.stringify(state));
+    const newState = JSON.parse(JSON.stringify(state)); //这种方式比较消耗内存
     newState.homeData = action.homeData;
     return newState;
   } else if (action.type === constants.INIT_SOWING_DATA) {
