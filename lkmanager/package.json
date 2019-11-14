@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.19.0",
     "bootstrap": "3.3.7",
     "echarts": "^4.4.0",
     "font-awesome": "^4.7.0",
@@ -24,6 +25,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "proxy": "http://localhost:1688",
   "eslintConfig": {
     "extends": "react-app"
   },
