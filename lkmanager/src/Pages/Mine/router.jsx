@@ -7,13 +7,19 @@ import ResetPwd from './ResetPwd';
 
 export default class MineRouter extends Component {
   render() {
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+
     return (
       <>
-        <Switch>
-          <Route path="/mine/main" component={Mine} />
-          <Route path="/mine/reset" component={ResetPwd} />
-          <Redirect exact from="/mine" to="/mine/main" />
-        </Switch>
+        {userData ? (
+          <Switch>
+            <Route path="/mine/main" component={Mine} />
+            <Route path="/mine/reset" component={ResetPwd} />
+            <Redirect exact from="/mine" to="/mine/main" />
+          </Switch>
+        ) : (
+          this.props.history.push('/login')
+        )}
       </>
     );
   }

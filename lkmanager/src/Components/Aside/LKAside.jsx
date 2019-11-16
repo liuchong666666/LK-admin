@@ -2,7 +2,8 @@ import React from 'react';
 import avatar from './../../Common/uploads/avatar.png';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import $ from 'jquery';
+// import './base';
 const IMG_PRE = 'http://localhost:1688/uploads/';
 
 class LKAside extends React.Component {
@@ -57,7 +58,7 @@ class LKAside extends React.Component {
                 {/* 这样来解决 javascript:void(0)  */}
                 {/* 工作的时候出现ie对一些方法(isArray)不兼容 用 core.js */}
                 <Link
-                  // to="/course"
+                  to="/course"
                   className={selected_flag === 'three' ? 'active' : ''}
                   onClick={() => this._dealWithClick('three')}
                 >
@@ -150,6 +151,18 @@ class LKAside extends React.Component {
     );
   }
   _dealWithClick(flag) {
+    if (flag === 'three') {
+      var a = $('.navs ul').prev('a');
+      a.on('click', function() {
+        // :hidden  //匹配所有隐藏的元素
+        // :visible   //匹配所有显示的元素
+        // a.next("ul:visible").hide(200);
+        a.next().hide(200);
+        $(this)
+          .next()
+          .slideToggle(300);
+      });
+    }
     this.setState({
       selected_flag: flag,
     });

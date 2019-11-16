@@ -1,11 +1,12 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route,
   Switch,
   Redirect,
 } from 'react-router-dom';
-
+// import createHistory from 'history/createHashHistory';
+import { createHashHistory } from 'history';
 import LayOut from './Components/LayOut';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Mine/Login';
@@ -19,12 +20,17 @@ import MineRouter from './Pages/Mine/router';
 import * as constants from './Store/actionTypes';
 
 import { connect } from 'react-redux';
+// import $ from 'jquery';
+
+const history = createHashHistory();
 
 class App extends React.Component {
   componentWillMount() {
     this.props.reqLocalData();
   }
+
   render() {
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
     //进来的时候会先直接调用render方法，所以取出来的userData是空，所以得先让reducer存进值了再从reducer里面取
     //主面板
     let LayOutRouter = (
@@ -73,7 +79,7 @@ class App extends React.Component {
           </div>
         </Provider> */}
         </>
-        <Router>
+        <Router history={history}>
           <Switch>
             {/* 如果用户登录信息（userData）存在 就进入LayOutRouter，不存在就重定向进入login*/}
             <Route
@@ -81,7 +87,8 @@ class App extends React.Component {
               path="/"
               render={
                 //  this.props.userData取reducer状态里面的userData
-                this.props.userData
+                // this.props.userData
+                userData
                   ? props => LayOutRouter
                   : () => <Redirect to="/login" push />
               }

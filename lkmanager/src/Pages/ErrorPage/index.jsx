@@ -3,8 +3,12 @@ import { Link } from "react-router-dom";
 import notFoundImg from "./404.jpg";
 export default class ErrorPage extends Component {
   render() {
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
+
     return (
       <>
+        {userData ?
+
         <div
           className="container-fluid"
           style={{
@@ -20,6 +24,8 @@ export default class ErrorPage extends Component {
             <h3 className="text-primary">哎呀，迷路了，点我返回首页！！</h3>
           </Link>
         </div>
+       :this.props.history.push('/login')
+      }
       </>
     );
   }

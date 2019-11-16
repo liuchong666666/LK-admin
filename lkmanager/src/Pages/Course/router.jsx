@@ -13,19 +13,24 @@ import CourseCategoryAdd from './CourseCategoryAdd';
 
 export default class CourseRouter extends Component {
   render() {
+    const userData = JSON.parse(sessionStorage.getItem('userData'));
     return (
       <>
-        <Switch>
-          <Route path="/course/list" component={CourseList} />
-          <Route path="/course/add" component={CourseAdd} />
-          <Route path="/course/add_one" component={CourseAddOne} />
-          <Route path="/course/add_two" component={CourseAddTwo} />
-          <Route path="/course/add_three" component={CourseAddThree} />
-          <Route path="/course/topic" component={CourseTopic} />
-          <Route path="/course/category" component={CourseCategory} />
-          <Route path="/course/category_add" component={CourseCategoryAdd} />
-          <Redirect exact from="/course" to="/course/list" />
-        </Switch>
+        {userData ? (
+          <Switch>
+            <Route path="/course/list" component={CourseList} />
+            <Route path="/course/add" component={CourseAdd} />
+            <Route path="/course/add_one" component={CourseAddOne} />
+            <Route path="/course/add_two" component={CourseAddTwo} />
+            <Route path="/course/add_three" component={CourseAddThree} />
+            <Route path="/course/topic" component={CourseTopic} />
+            <Route path="/course/category" component={CourseCategory} />
+            <Route path="/course/category_add" component={CourseCategoryAdd} />
+            <Redirect exact from="/course" to="/course/list" />
+          </Switch>
+        ) : (
+          this.props.history.push('/login')
+        )}
       </>
     );
   }

@@ -136,3 +136,9 @@ import 'rc-pagination/dist/rc-pagination.min.css'
 
     this.props.addCourseData.course_page = course_page;
     this.props.addCourseData.course_page_url = this.refs.course_page.files[0];
+
+### 用了 Router 包裹的才具有 this.props.history
+
+没用的话 就用 withRouter 包裹组件 然后再用就可以了 https://www.cnblogs.com/luowenshuai/p/9526341.html
+
+解决路由监听网址输入或者刷新报错 使用 HashRouter https://blog.csdn.net/weixin_39168678/article/details/79756305

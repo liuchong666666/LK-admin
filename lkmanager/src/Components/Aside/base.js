@@ -1,8 +1,9 @@
 // 顶部特效进度条
-NProgress.start();
-NProgress.done();
+// NProgress.start();
+// NProgress.done();
 
 // console.log($('.navs ul').css({ 'backgroundColor': 'red' }))
+import $ from 'jquery';
 // 侧边栏伸缩
 var a = $('.navs ul').prev('a');
 a.on('click', function() {
