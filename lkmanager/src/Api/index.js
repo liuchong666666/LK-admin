@@ -29,3 +29,10 @@ export const editPwdData = data =>
 export const getStuData = data => ajax(BASE_URL + '/stu/api/list', data);
 //10.获取用户总数
 export const getStuDataCount = () => ajax(BASE_URL + '/stu/api/count');
+//11.请求分类数据
+export const getCategoryData = () => ajax(BASE_URL + '/category/api/list');
+//12.添加课程数据
+export const addSourceData = data =>
+  ajax(BASE_URL + '/course/api/add', data, 'POST');
+//13.请求课程数据
+export const getSourceData = () => ajax(BASE_URL + '/course/api/list');

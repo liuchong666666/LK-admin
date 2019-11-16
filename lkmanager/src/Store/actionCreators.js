@@ -5,6 +5,8 @@ import {
   getSowingData,
   getUserData,
   getStuData,
+  getCategoryData,
+  getSourceData,
 } from './../Api/index';
 //0.获取首页数据
 export const getHomeDataAction = () => {
@@ -87,6 +89,45 @@ export const getStuDataAction = parmas => {
       })
       .catch(err => {
         alert('学生用户数据请求失败', err);
+      });
+  };
+};
+
+//4.获取课程分类列表数据
+export const getCategoryDataAction = () => {
+  return dispatch => {
+    //请求网络数据
+    getCategoryData()
+      .then(res => {
+        if (res.status_code === 200) {
+          const categoryData = res.result;
+          dispatch({
+            type: constants.INIT_CATEGORY_DATA,
+            categoryData,
+          });
+        }
+      })
+      .catch(err => {
+        alert('分类数据请求失败', err);
+      });
+  };
+};
+//5.获取课程列表数据
+export const getSourceDataAction = () => {
+  return dispatch => {
+    // 请求网络数据
+    getSourceData()
+      .then(res => {
+        if (res.status_code === 200) {
+          const sourceData = res.result;
+          dispatch({
+            type: constants.INIT_SOURCE_DATA,
+            sourceData,
+          });
+        }
+      })
+      .catch(() => {
+        alert('课程数据请求失败！');
       });
   };
 };

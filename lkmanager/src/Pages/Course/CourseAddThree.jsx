@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-
-export default class CourseAddThree extends Component {
+import { connect } from 'react-redux';
+import { addSourceData } from './../../Api/index';
+class CourseAddThree extends Component {
   render() {
     return (
       <>
@@ -171,6 +172,12 @@ export default class CourseAddThree extends Component {
                     </li>
                   </ul>
                 </div>
+                <button
+                  class="btn btn-danger btn-sm pull-right"
+                  onClick={() => this._dealClick()}
+                >
+                  提交课程
+                </button>
               </div>
             </div>
           </div>
@@ -275,4 +282,56 @@ export default class CourseAddThree extends Component {
       </>
     );
   }
+  _dealClick() {
+    //1.取出数据
+    const addCourseData = this.props.addCourseData;
+    console.log(addCourseData);
+
+    //2.创建formData
+    let formData = new FormData();
+    formData.append('course_name', addCourseData.course_name);
+    formData.append('course_title', addCourseData.course_title);
+    formData.append('course_sub_title', addCourseData.course_sub_title);
+    formData.append('course_teacher', addCourseData.course_teacher);
+    formData.append(
+      'course_serialize_status',
+      addCourseData.course_serialize_status
+    );
+    formData.append('main_category', addCourseData.main_category);
+    formData.append('sub_category', addCourseData.sub_category);
+    formData.append('course_intro', addCourseData.course_intro);
+    formData.append('course_tag', addCourseData.course_tag);
+    formData.append('course_page', addCourseData.course_page_url);
+
+    addSourceData(formData)
+      .then(res => {
+        if (res.status_code === 200) {
+          //提交成功后还需要把reducer里面得addCourseData清空  然后再次填的时候就是空得了
+          //清空
+          this.props.addCourseData.course_name = '';
+          this.props.addCourseData.course_title = '';
+          this.props.addCourseData.course_sub_title = '';
+          this.props.addCourseData.course_teacher = '';
+          this.props.addCourseData.course_serialize_status = '';
+          this.props.addCourseData.main_category = '';
+          this.props.addCourseData.sub_category = '';
+          this.props.addCourseData.course_intro = '';
+          this.props.addCourseData.course_tag = '';
+          this.props.addCourseData.course_page = '';
+          this.props.addCourseData.course_page_url = '';
+          //返回主页面
+          this.props.history.push('/');
+        }
+      })
+      .catch(err => {
+        console.log(err);
+        alert('上传课程失败!');
+      });
+  }
 }
+const mapStateToProps = state => {
+  return {
+    addCourseData: state.addCourseData,
+  };
+};
+export default connect(mapStateToProps, null)(CourseAddThree);

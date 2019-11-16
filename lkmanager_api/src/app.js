@@ -7,6 +7,7 @@ import homeRouter from './../routes/home';
 import userRouter from './../routes/user';
 import stuRouter from './../routes/students';
 import categoryRouter from './../routes/category';
+import courseRouter from './../routes/course';
 // 引入中间件
 import bodyParser from './../middle_wares/body_parser';
 import errorLog from './../middle_wares/error_log';
@@ -43,6 +44,7 @@ app.use(homeRouter);
 app.use(userRouter);
 app.use(stuRouter);
 app.use(categoryRouter);
+app.use(courseRouter);
 // 6. 挂载错误中间件
 app.use(errorLog);
 

@@ -8,13 +8,27 @@ const router = express.Router({});
  */
 router.post('/category/api/add', (req, res, next) => {
   const main_title = req.body.main_title || '';
-  const main_total_count = req.body.main_total_count || 0;
+  let main_total_count = 1;
   const main_is_show = req.body.main_is_show || '1';
   const main_sort = req.body.main_sort || '1';
   const sub_title = req.body.sub_title || '';
   const sub_total_count = req.body.sub_total_count || '';
   const sub_is_show = req.body.sub_is_show || '';
   const sub_sort = req.body.sub_sort || '2';
+  // Category.findOne(
+  //   {
+  //     main_title: req.body.main_title,
+  //   },
+  //   (err, cate) => {
+  //     if (err) {
+  //       res.next(err);
+  //     }
+  //     // console.log('**************');
+  //     // console.log(cate.sub_course);
+  //     // console.log('**************');
+  //   }
+  // );
+
   Category.updateOne(
     //如果数据库中存在 就去数据库里面的对应位置数组末尾添加子分类数据
     { main_title: req.body.main_title },
@@ -59,7 +73,6 @@ router.post('/category/api/add', (req, res, next) => {
           if (err) {
             return next(err);
           }
-          console.log('----------------------');
           res.json({
             status_code: 200,
             result: '添加分类成功',
@@ -85,6 +98,7 @@ router.get('/category/api/list', (req, res, rext) => {
       if (err) {
         return next(err);
       }
+
       res.json({
         status_code: 200,
         result: cate,

@@ -1,10 +1,29 @@
-import React, { Component } from "react";
-import course_1 from "../../Common/uploads/course_1.png";
-import course_2 from "../../Common/uploads/course_2.png";
-import course_3 from "../../Common/uploads/course_3.png";
-import course_4 from "../../Common/uploads/course_4.png";
-export default class CourseList extends Component {
+import React, { Component } from 'react';
+import course_1 from '../../Common/uploads/course_1.png';
+import { connect } from 'react-redux';
+import { getSourceDataAction } from './../../Store/actionCreators';
+const IMG_PRE = 'http://localhost:1688/uploads/';
+
+class CourseList extends Component {
+  componentDidMount() {
+    this.props.reqCourseData();
+  }
   render() {
+    const { sourceData } = this.props;
+    console.log(sourceData);
+    /*
+course_intro: "web大前端"
+course_manager: [{…}]
+course_name: "web大前端"
+course_page: "upload_acfebb63b5e06139c1ee7ff5926e71ab.jpg"
+course_serialize_status: "更新中"
+course_sub_title: "web大前端"
+course_tag: "web大前端"
+course_teacher: "熊大"
+course_title: "web大前端"
+main_category: "web"
+sub_category: "c语言"
+    */
     return (
       <>
         <div className="container-fluid">
@@ -13,7 +32,7 @@ export default class CourseList extends Component {
             {/* <!-- 面包屑 --> */}
             <ol className="breadcrumb">
               <li>
-                {" "}
+                {' '}
                 <a onClick={e => e.preventDefault()} href="a.html">
                   课程管理
                 </a>
@@ -22,149 +41,36 @@ export default class CourseList extends Component {
             </ol>
             <div className="courses">
               {/* <!-- 搜索 --> */}
-              <div className="search">
-                <form action="" className="form-inline">
-                  <select name="" className="form-control input-sm">
-                    <option value="">按学科</option>
-                  </select>
-                  <select name="" className="form-control input-sm">
-                    <option value="">按类型</option>
-                  </select>
-                  <select name="" className="form-control input-sm">
-                    <option value="">按价格</option>
-                  </select>
-                  <select name="" className="form-control input-sm">
-                    <option value="">按热度</option>
-                  </select>
-                  <button className="btn btn-danger btn-sm">过滤</button>
-                  <div className="input-group pull-right">
-                    <input type="text" className="form-control input-sm" />
-                    <span className="input-group-btn">
-                      <button className="btn btn-danger btn-sm">搜索</button>
-                    </span>
+              <div className="search"></div>
+              {sourceData.map((source, index) => {
+                return (
+                  <div className="course" key={index}>
+                    <div className="pic">
+                      <img src={IMG_PRE + source.course_page} alt="" />
+                    </div>
+
+                    <div className="info">
+                      <a onClick={e => e.preventDefault()} href="a.html">
+                        {source.course_name}
+                      </a>
+                      <ul className="list-unstyled">
+                        <li>
+                          <span>讲师：{source.course_teacher}</span>
+                          <span>类别：{source.main_category}</span>
+                        </li>
+                        <li>
+                          <span>课时：{source.course_manager[0].c_time}</span>
+                          <span>学员：111111</span>
+                        </li>
+                        <li>
+                          <span>浏览：123333</span>
+                          <span></span>
+                        </li>
+                      </ul>
+                    </div>
                   </div>
-                </form>
-              </div>
-              <div className="course">
-                <div className="pic">
-                  <img src={course_1} alt="" />
-                </div>
-                <div className="info">
-                  <a onClick={e => e.preventDefault()} href="a.html">
-                    撩课大前端—Vue项目实战—撩多多商城
-                  </a>
-                  <ul className="list-unstyled">
-                    <li>
-                      <span>讲师：叶建华</span>
-                      <span>类别：web大前端</span>
-                    </li>
-                    <li>
-                      <span>课时：123</span>
-                      <span>学员：111111</span>
-                    </li>
-                    <li>
-                      <span>浏览：123333</span>
-                      <span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="course">
-                <div className="pic">
-                  <img src={course_2} alt="" />
-                </div>
-                <div className="info">
-                  <a onClick={e => e.preventDefault()} href="a.html">
-                    撩课大前端—Vue项目实战—撩多多商城
-                  </a>
-                  <ul className="list-unstyled">
-                    <li>
-                      <span>讲师：叶建华</span>
-                      <span>类别：web大前端</span>
-                    </li>
-                    <li>
-                      <span>课时：123</span>
-                      <span>学员：111111</span>
-                    </li>
-                    <li>
-                      <span>浏览：123333</span>
-                      <span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="course">
-                <div className="pic">
-                  <img src={course_3} alt="" />
-                </div>
-                <div className="info">
-                  <a onClick={e => e.preventDefault()} href="a.html">
-                    撩课大前端—Vue项目实战—撩多多商城
-                  </a>
-                  <ul className="list-unstyled">
-                    <li>
-                      <span>讲师：叶建华</span>
-                      <span>类别：web大前端</span>
-                    </li>
-                    <li>
-                      <span>课时：123</span>
-                      <span>学员：111111</span>
-                    </li>
-                    <li>
-                      <span>浏览：123333</span>
-                      <span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="course">
-                <div className="pic">
-                  <img src={course_4} alt="" />
-                </div>
-                <div className="info">
-                  <a onClick={e => e.preventDefault()} href="a.html">
-                    撩课大前端—Vue项目实战—撩多多商城
-                  </a>
-                  <ul className="list-unstyled">
-                    <li>
-                      <span>讲师：叶建华</span>
-                      <span>类别：web大前端</span>
-                    </li>
-                    <li>
-                      <span>课时：123</span>
-                      <span>学员：111111</span>
-                    </li>
-                    <li>
-                      <span>浏览：123333</span>
-                      <span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              <div className="course">
-                <div className="pic">
-                  <img src={course_1} alt="" />
-                </div>
-                <div className="info">
-                  <a onClick={e => e.preventDefault()} href="a.html">
-                    撩课大前端—Vue项目实战—撩多多商城
-                  </a>
-                  <ul className="list-unstyled">
-                    <li>
-                      <span>讲师：叶建华</span>
-                      <span>类别：web大前端</span>
-                    </li>
-                    <li>
-                      <span>课时：123</span>
-                      <span>学员：111111</span>
-                    </li>
-                    <li>
-                      <span>浏览：123333</span>
-                      <span></span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+                );
+              })}
             </div>
             {/* <!-- 分页 --> */}
             <ul className="pagination pull-right">
@@ -210,3 +116,17 @@ export default class CourseList extends Component {
     );
   }
 }
+const mapStateToProps = state => {
+  return {
+    sourceData: state.sourceData,
+  };
+};
+const mapDispatchToProps = disaptch => {
+  return {
+    reqCourseData() {
+      const action = getSourceDataAction();
+      disaptch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CourseList);

@@ -131,3 +131,8 @@ import RCPagination from 'rc-pagination';
 import 'rc-pagination/dist/rc-pagination.min.css'
 
 说明：pagination 组件里边要传入俩个参数，一是 current 当前页，二是 total 总记录数，pageSize 是每一页的记录数量默认为 10
+
+### //上传图片的时候应该是传文件 file 对象 而不是 base64 字符串
+
+    this.props.addCourseData.course_page = course_page;
+    this.props.addCourseData.course_page_url = this.refs.course_page.files[0];

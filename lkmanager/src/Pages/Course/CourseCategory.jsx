@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-export default class CourseCategory extends Component {
+import { getCategoryDataAction } from './../../Store/actionCreators';
+import { connect } from 'react-redux';
+class CourseCategory extends Component {
   render() {
     return (
       <>
@@ -33,204 +35,49 @@ export default class CourseCategory extends Component {
                     <th width="10%">操作</th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr className="active">
-                    <td className="text-left">Web大前端</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ HTML/CSS</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Javascript</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Vue+项目实战</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr className="active">
-                    <td className="text-left">JavaEE+大数据</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Spring</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Oricon</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr className="active">
-                    <td className="text-left">数据库</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Mysql</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ MongoDB</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ Oracle</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr className="active">
-                    <td className="text-left">Python+人工智能</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ 大数据</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td className="text-left">&nbsp;&nbsp;├ 云计算</td>
-                    <td>300</td>
-                    <td>是</td>
-                    <td>10</td>
-                    <td>
-                      <Link
-                        to="/course/category_add"
-                        className="btn btn-info btn-xs"
-                      >
-                        编辑
-                      </Link>
-                    </td>
-                  </tr>
-                </tbody>
+
+                {this.props.categoryData.map((category, index) => {
+                  return (
+                    <tbody key={index}>
+                      <tr className="active">
+                        <td className="text-left">{category.main_title}</td>
+                        {/* 由于还不会后端的计算数组大小，所以自己前端这里通过length
+                        来计算 */}
+                        <td>{category.sub_course.length}</td>
+                        <td>{category.main_is_show === '1' ? '是' : '否'}</td>
+                        <td>{category.main_sort}</td>
+                        <td>
+                          <Link
+                            to="/course/category_add"
+                            className="btn btn-info btn-xs"
+                          >
+                            编辑
+                          </Link>
+                        </td>
+                      </tr>
+                      {category.sub_course.map((sub, index) => {
+                        return (
+                          <tr key={'sub' + index}>
+                            <td className="text-left">
+                              &nbsp;&nbsp;├ {sub.sub_title}
+                            </td>
+                            <td>{sub.sub_total_count}</td>
+                            <td>{sub.sub_is_show === '1' ? '是' : '否'}</td>
+                            <td>{sub.sub_sort}</td>
+                            <td>
+                              <Link
+                                to="/course/category_add"
+                                className="btn btn-info btn-xs"
+                              >
+                                编辑
+                              </Link>
+                            </td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  );
+                })}
               </table>
             </div>
           </div>
@@ -238,4 +85,21 @@ export default class CourseCategory extends Component {
       </>
     );
   }
+  componentDidMount() {
+    this.props.reqCategoryData();
+  }
 }
+const mapStateToProps = state => {
+  return {
+    categoryData: state.categoryData,
+  };
+};
+const mapDispatchToProps = disaptch => {
+  return {
+    reqCategoryData() {
+      const action = getCategoryDataAction();
+      disaptch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(CourseCategory);

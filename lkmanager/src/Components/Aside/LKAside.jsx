@@ -9,7 +9,7 @@ class LKAside extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected_flag: 'two',
+      selected_flag: 'one',
     };
   }
   render() {
@@ -57,7 +57,7 @@ class LKAside extends React.Component {
                 {/* 这样来解决 javascript:void(0)  */}
                 {/* 工作的时候出现ie对一些方法(isArray)不兼容 用 core.js */}
                 <Link
-                  to="/course"
+                  // to="/course"
                   className={selected_flag === 'three' ? 'active' : ''}
                   onClick={() => this._dealWithClick('three')}
                 >
