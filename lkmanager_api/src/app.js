@@ -5,6 +5,8 @@ import indexRouter from './../routes/index';
 import sowingRouter from './../routes/sowing';
 import homeRouter from './../routes/home';
 import userRouter from './../routes/user';
+import stuRouter from './../routes/students';
+import categoryRouter from './../routes/category';
 // 引入中间件
 import bodyParser from './../middle_wares/body_parser';
 import errorLog from './../middle_wares/error_log';
@@ -39,6 +41,8 @@ app.use(indexRouter);
 app.use(sowingRouter);
 app.use(homeRouter);
 app.use(userRouter);
+app.use(stuRouter);
+app.use(categoryRouter);
 // 6. 挂载错误中间件
 app.use(errorLog);
 

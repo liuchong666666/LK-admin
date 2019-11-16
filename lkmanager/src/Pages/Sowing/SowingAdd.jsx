@@ -1,6 +1,6 @@
-import React, { Component } from "react";
-import { addSowingData } from "./../../Api";
-import { Link } from "react-router-dom";
+import React, { Component } from 'react';
+import { addSowingData } from './../../Api';
+import { Link } from 'react-router-dom';
 
 class SowingAdd extends Component {
   render() {
@@ -138,20 +138,20 @@ class SowingAdd extends Component {
       !s_time ||
       !e_time
     ) {
-      alert("输入内容不能为空！");
+      alert('输入内容不能为空！');
       return;
     }
 
     //3.创建formData对象
     let formData = new FormData();
-    formData.append("image_title", image_title);
-    formData.append("image_url", image_url);
-    formData.append("image_small_url", image_small_url);
-    formData.append("image_link", image_link);
-    formData.append("s_time", s_time);
-    formData.append("e_time", e_time);
+    formData.append('image_title', image_title);
+    formData.append('image_url', image_url);
+    formData.append('image_small_url', image_small_url);
+    formData.append('image_link', image_link);
+    formData.append('s_time', s_time);
+    formData.append('e_time', e_time);
     //3.发送请求
-    console.log("image_url:", formData.get("image_url"));
+    console.log('image_url:', formData.get('image_url'));
     //以为在控制台中访问不到formData的数据，
     // 你在控制台看到的是FormData原型，
     // 存储的数据没有以对象属性的方式体现，
@@ -161,16 +161,16 @@ class SowingAdd extends Component {
 
     addSowingData(formData)
       .then(res => {
-        console.log("添加成功");
+        console.log('添加成功');
         console.log(res);
         if (res.status_code === 200) {
           // this.props.history.goBack();
-          this.props.history.push("/sowingList"); //用push回去的时候会重新获取数据
+          this.props.history.push('/sowing/list'); //用push回去的时候会重新获取数据
         }
       })
       .catch(error => {
         console.log(error);
-        alert("上传数据失败！");
+        alert('上传数据失败！');
       });
   }
 }

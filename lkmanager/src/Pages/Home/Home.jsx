@@ -1,12 +1,15 @@
-import React, { Component } from "react";
-import { connect } from "react-redux";
-import { getHomeDataAction } from "./../../Store/actionCreators";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getHomeDataAction } from './../../Store/actionCreators';
+import LKEChartsOne from './../../Components/LKTool/LKEChartsOne';
+import LKEChartsTwo from './../../Components/LKTool/LKEChartsTwo';
+
 class Home extends Component {
   componentDidMount() {
     this.props.reqHomeData();
   }
   render() {
-    console.log("首页数据：", this.props.homeData);
+    console.log('首页数据：', this.props.homeData);
     const { homeData } = this.props;
     return (
       <>
@@ -60,14 +63,14 @@ class Home extends Component {
                   </div>
                 </div>
               </div>
-              {/* <div className="lk-chart">
+              <div className="lk-chart">
                 <div className="chart">
-                  <div id="main1" style={{ height: 400 }}></div>
+                  <LKEChartsOne />
                 </div>
                 <div className="chart">
-                  <div id="main2" style={{ height: 400 }}></div>
+                  <LKEChartsTwo />
                 </div>
-              </div> */}
+              </div>
             </div>
           </div>
         </div>
@@ -79,7 +82,7 @@ class Home extends Component {
 const mapStateToProps = state => {
   //状态
   return {
-    homeData: state.homeData || {} //然后这个homeData值 就可以通过this.props取
+    homeData: state.homeData || {}, //然后这个homeData值 就可以通过this.props取
   };
 };
 const mapDispatchToProps = dispatch => {
@@ -89,7 +92,7 @@ const mapDispatchToProps = dispatch => {
     reqHomeData() {
       const action = getHomeDataAction();
       dispatch(action);
-    }
+    },
   };
 };
 

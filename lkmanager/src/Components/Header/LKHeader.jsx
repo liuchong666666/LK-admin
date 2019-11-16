@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 class LKHeader extends React.Component {
   render() {
     return (
@@ -43,7 +43,7 @@ class LKHeader extends React.Component {
                 </a>
               </li>
               <li>
-                <a onClick={e => e.preventDefault()} href="a.html">
+                <a style={{ cursor: 'pointer' }} onClick={() => this._logOut()}>
                   <i className="fa fa-sign-out"></i>退出
                 </a>
               </li>
@@ -52,6 +52,14 @@ class LKHeader extends React.Component {
         </div>
       </div>
     );
+  }
+  //退出登录
+  _logOut() {
+    //1.清空本地数据
+    sessionStorage.removeItem('userData');
+    //2.回到首页
+    //由于这个LKHeader不在路由里面，所以用window.location.href
+    window.location.href = '/';
   }
 }
 export default LKHeader;

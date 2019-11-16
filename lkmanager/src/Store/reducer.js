@@ -4,6 +4,8 @@ import * as constants from './actionTypes';
 const defaultState = {
   homeData: {},
   sowingData: [],
+  userData: {},
+  stuDataList: [],
 };
 
 export default (state = defaultState, action) => {
@@ -14,6 +16,16 @@ export default (state = defaultState, action) => {
   } else if (action.type === constants.INIT_SOWING_DATA) {
     const newState = JSON.parse(JSON.stringify(state));
     newState.sowingData = action.sowingData;
+    return newState;
+  } else if (action.type === constants.INIT_USER_DATA) {
+    const newState = JSON.parse(JSON.stringify(state));
+    //把用户数据存入本地
+    sessionStorage.setItem('userData', JSON.stringify(action.userData));
+    newState.userData = action.userData;
+    return newState;
+  } else if (action.type === constants.INIT_STUDENTS_DATA) {
+    const newState = JSON.parse(JSON.stringify(state));
+    newState.stuDataList = action.stuDataList;
     return newState;
   }
 

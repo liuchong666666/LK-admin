@@ -73,3 +73,61 @@ this.setState({
 ### 通过 this.refs 获取当前所有加了 ref 的元素，
 
 然后通过 this.refs[imgRef]获取某个 ref 元素，，，，， imgRef 为元素上的 ref="xxx"的 xxx 值
+
+### 获取输入框的属性
+
+e.target.name
+e.target.value
+
+### 输入框内按下回车键
+
+<input
+name="user_pwd"
+type="password"
+className="form-control"
+placeholder="密码"
+onChange={e => this.onInputChange(e)}
+onKeyUp={e => {
+this.onInputKeyUp(e);
+}}
+/>
+onInputChange(e){}
+onInputKeyUp(e) {
+if (e.keyCode === 13) {
+this.onSubmit();
+}
+}
+onSubmit(e){}
+
+### axios：当不是 formdata 的形式数据时，传给后端时候会将整个数据作为键值对中的键 ('data':'') 然后 值 value 为 空字符串
+
+//上面元素是 div 不是 form 表单
+可以通过 URLSearchParams 来处理
+let params = new URLSearchParams();
+params.append('user_name', user_name);
+params.append('user_pwd', user_pwd);
+//发送请求
+reqLogin(params)
+
+//创建 formData 对象也可以
+let formData = new FormData();
+formData.append("image_title", image_title);
+formData.append("image_url", image_url);
+formData.append("image_small_url", image_small_url);
+formData.append("image_link", image_link);
+formData.append("s_time", s_time);
+formData.append("e_time", e_time);
+//发送请求
+addSowingData(formData)
+
+### 分页插件 rc-pagination
+
+https://github.com/react-component/pagination
+安装：
+yarn add rc-pagination
+
+使用
+import RCPagination from 'rc-pagination';
+import 'rc-pagination/dist/rc-pagination.min.css'
+
+说明：pagination 组件里边要传入俩个参数，一是 current 当前页，二是 total 总记录数，pageSize 是每一页的记录数量默认为 10
