@@ -7,14 +7,14 @@ const router = express.Router({});
  *
  */
 router.post('/category/api/add', (req, res, next) => {
-  const main_title = req.body.main_title || '';
+  const main_title = req.body.main_title || '哈哈';
   let main_total_count = 1;
   const main_is_show = req.body.main_is_show || '1';
   const main_sort = req.body.main_sort || '1';
-  const sub_title = req.body.sub_title || '';
-  const sub_total_count = req.body.sub_total_count || '';
-  const sub_is_show = req.body.sub_is_show || '';
-  const sub_sort = req.body.sub_sort || '2';
+  const sub_title = req.body.sub_title || '哈哈';
+  const sub_total_count = req.body.sub_total_count || '1';
+  const sub_is_show = req.body.sub_is_show || '1';
+  const sub_sort = req.body.sub_sort || '1';
   // Category.findOne(
   //   {
   //     main_title: req.body.main_title,

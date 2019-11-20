@@ -20,24 +20,24 @@ router.post('/home/api/add', (req, res, next) => {
   // 2. 操作数据库
   const home = new Home({
     // 登录用户数
-    login_user: fields.login_user,
+    login_user: fields.login_user || '30',
     // 新增注册数
-    new_register: fields.new_register,
+    new_register: fields.new_register || '30',
     // 课程新增学员
-    new_stu_course: fields.new_stu_course,
+    new_stu_course: fields.new_stu_course || '30',
     // 班级新增学员
-    new_stu_classes: fields.new_stu_classes,
+    new_stu_classes: fields.new_stu_classes || '30',
     // 新增会员
-    new_member: fields.new_member,
+    new_member: fields.new_member || '30',
     // 未回复问答
-    not_reply: fields.not_reply,
+    not_reply: fields.not_reply || '30',
     // 订单统计
     order_counter: {
-      web: fields.web,
-      java: fields.java,
-      python: fields.python,
-      bigdata: fields.bigdata,
-      ui: fields.ui,
+      web: fields.web || '30',
+      java: fields.java || '30',
+      python: fields.python || '30',
+      bigdata: fields.bigdata || '30',
+      ui: fields.ui || '30',
     },
   });
   home.save((err, result) => {

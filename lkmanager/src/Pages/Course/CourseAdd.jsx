@@ -82,6 +82,8 @@ class CourseAdd extends Component {
     //因为最终在第三个页面把三个页面的所有数据发送到后台，所以把每个页面的数据放到redux里面
     //2.跳转到下一级界面
     this.props.addCourseData.course_name = course_name; //同步
+    console.log(this.props.addCourseData)
+    // return
     this.props.history.push('/course/add_one');
   }
 }

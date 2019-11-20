@@ -11,8 +11,9 @@ const S_KEY = 'WaYjH1314.ItLikE.CoM';
 /**管理员专用（测试） */
 router.post('/user/api/add', (req, res, next) => {
   const user_name = req.body.user_name || '';
-  const user_pwd = md5(req.body.user_pwd + S_KEY) || '';
-
+  // const user_pwd = md5(req.body.user_pwd + S_KEY) || '';
+  const user_pwd = req.body.user_pwd || '';
+  console.log(req.body)
   // res.send(req.body);
 
   //2.操作数据库

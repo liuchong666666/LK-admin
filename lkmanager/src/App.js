@@ -10,6 +10,7 @@ import { createHashHistory } from 'history';
 import LayOut from './Components/LayOut';
 import Home from './Pages/Home/Home';
 import Login from './Pages/Mine/Login';
+import Register from './Pages/Mine/Register';
 import User from './Pages/User/User';
 
 import ErrorPage from './Pages/ErrorPage/index';
@@ -94,6 +95,7 @@ class App extends React.Component {
               }
             />
             <Route path="/login" component={Login} />
+            <Route path="/register" component={Register} />
             <Route path="/" render={props => LayOutRouter} />
           </Switch>
         </Router>

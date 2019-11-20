@@ -36,3 +36,5 @@ export const addSourceData = data =>
   ajax(BASE_URL + '/course/api/add', data, 'POST');
 //13.请求课程数据
 export const getSourceData = () => ajax(BASE_URL + '/course/api/list');
+//14.注册管理员
+export const regeisterUser = (data) => ajax(BASE_URL + '/user/api/add', data, "POST");

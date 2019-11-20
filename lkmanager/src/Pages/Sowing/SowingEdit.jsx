@@ -213,7 +213,7 @@ export default class SowingEdit extends Component {
     editSowingData(formData)
       .then(res => {
         if (res.status_code === 200) {
-          this.props.history.push('/sowingList');
+          this.props.history.push('/sowing/list');
         }
       })
       .catch(err => {

@@ -9,6 +9,7 @@
 ### 启动
 
 1.先把 lkmanager 和 lkmanager_api 俩个文件夹 各自 yarn install 把各自的依赖项下载好 （如果出现 node-sass 安装报错，请使用 npm i -S node-sass）
+还要cnpm install proxy 安装这个代理
 
 2.安装好依赖项后 进入本地 找到 mongodb 的 /data/db 所在磁盘 在该磁盘目录下进入 cmd --> mongod 打开 mongodb 数据库服务器
 3.cmd 进入 lkmanager_api 文件夹 输入 npm run dev （package.json 里面有配置）
